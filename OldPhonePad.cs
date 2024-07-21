@@ -1,12 +1,12 @@
 using OldPhonePadUI.Implement;
 using OldPhonePadUI.Interface;
-using System;
-using System.Windows.Forms;
 
 namespace OldPhonePadUI
 {
     public partial class OldPhonePad : Form
     {
+
+        #region Properties
         public System.Windows.Forms.Timer Timer { get; private set; }
         public string CurrentText { get; set; } = "";
         public int CurrentIndex { get; set; } = 0;
@@ -18,7 +18,10 @@ namespace OldPhonePadUI
         {
             "", "&(", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"
         };
+        #endregion
 
+
+        #region Constructor
         public OldPhonePad()
         {
             InitializeComponent();
@@ -26,14 +29,13 @@ namespace OldPhonePadUI
             Timer.Interval = TimerInterval;
             Timer.Tick += Timer_Tick;
         }
+        #endregion
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            Timer.Stop();
-            CurrentIndex = 0;
-        }
 
-        private void button_Click(object sender, EventArgs e)
+        #region Events
+
+        #region btn_Click
+        private void btn_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             string buttonText = button.Text.Substring(0, 1);
@@ -43,6 +45,9 @@ namespace OldPhonePadUI
             btnchecker.CheckButtonPress(this, button);
         }
 
+        #endregion
+
+        #region btnClear_Click
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtShow.Clear();
@@ -50,5 +55,19 @@ namespace OldPhonePadUI
             CurrentIndex = 0;
             Timer.Stop();
         }
+        #endregion
+
+        #region Timer_Tick
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Timer.Stop();
+            CurrentIndex = 0;
+        }
+        #endregion
+
+
+        #endregion
+
+
     }
 }

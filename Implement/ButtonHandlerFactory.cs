@@ -1,14 +1,10 @@
 ﻿using OldPhonePadUI.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OldPhonePadUI.Implement
 {
     public static class ButtonHandlerFactory
     {
+        #region GetButtonChecker
         public static IBtnChecker GetButtonChecker(string buttonText)
         {
             return buttonText switch
@@ -20,5 +16,7 @@ namespace OldPhonePadUI.Implement
                 _ => new NumericButtonHandler(),
             };
         }
+        #endregion
+
     }
 }

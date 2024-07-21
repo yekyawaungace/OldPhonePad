@@ -51,7 +51,7 @@
                 this.btngroup[i] = new Button();
                 this.btngroup[i].Text = buttonLabels[i];
                 this.btngroup[i].Size = new System.Drawing.Size(buttonWidth, buttonHeight);
-                this.btngroup[i].Click += new System.EventHandler(this.button_Click);
+                this.btngroup[i].Click += new System.EventHandler(this.btn_Click);
                 this.btngroup[i].Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
                 this.btngroup[i].BackColor = Color.LightGray;
                 this.btngroup[i].FlatStyle = FlatStyle.Flat;

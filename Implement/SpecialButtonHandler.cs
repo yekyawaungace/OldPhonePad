@@ -1,9 +1,5 @@
 ﻿using OldPhonePadUI.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace OldPhonePadUI.Implement
 {
@@ -11,6 +7,7 @@ namespace OldPhonePadUI.Implement
     {
         public void CheckButtonPress(OldPhonePad context, Button button)
         {
+            #region CheckButtonPress
             string buttonText = button.Text.Substring(0, 1);
 
             if (buttonText == "*")
@@ -30,6 +27,8 @@ namespace OldPhonePadUI.Implement
                 context.CurrentIndex = 0;
                 context.Timer.Stop();
             }
+            #endregion
+
         }
     }
 }
