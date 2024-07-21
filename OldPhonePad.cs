@@ -11,7 +11,7 @@ namespace OldPhonePadUI
         public string CurrentText { get; set; } = "";
         public int CurrentIndex { get; set; } = 0;
         public DateTime LastKeyPress { get; set; }
-        public int TimerInterval { get; private set; } = 60000;
+        public int TimerInterval { get; private set; } = 1000;
         public TextBox txtShow { get; private set; }
 
         public readonly string[] KeyMappings = new string[]
