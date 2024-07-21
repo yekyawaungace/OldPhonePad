@@ -2,10 +2,13 @@
 {
     partial class OldPhonePad
     {
+        #region Properties
         private System.ComponentModel.IContainer components = null;
         private Button[] btngroup;
         private Button btnClear;
+        #endregion
 
+        #region Dispose
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -14,7 +17,9 @@
             }
             base.Dispose(disposing);
         }
+        #endregion
 
+        #region InitializeComponent
         private void InitializeComponent()
         {
             this.txtShow = new TextBox();
@@ -22,8 +27,10 @@
             this.btnClear = new Button();
             this.SuspendLayout();
 
+
+            #region txtShow
             // 
-            // TextBoxDisplay
+            // txtShow
             // 
             this.txtShow.Location = new System.Drawing.Point(50, 20);
             this.txtShow.Name = "txtShow";
@@ -31,7 +38,9 @@
             this.txtShow.Font = new System.Drawing.Font("Courier New", 14F, System.Drawing.FontStyle.Regular);
             this.txtShow.TabIndex = 0;
             this.txtShow.TextAlign = HorizontalAlignment.Center;
+            #endregion
 
+            #region btngroup
             // 
             // buttons
             // 
@@ -63,10 +72,14 @@
                 this.btngroup[i].Location = new System.Drawing.Point(50 + col * (buttonWidth + spacing), 70 + row * (buttonHeight + spacing));
                 this.Controls.Add(this.btngroup[i]);
             }
+            #endregion
 
-            // 
+            #region btnClear
+            //
             // buttonClear
-            // 
+            //
+
+
             this.btnClear.Location = new System.Drawing.Point(50, 350); // Moved lower
             this.btnClear.Name = "butClear";
             this.btnClear.Size = new System.Drawing.Size(260, 50);
@@ -80,7 +93,9 @@
             this.btnClear.FlatAppearance.BorderColor = Color.DarkGray;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             this.Controls.Add(this.btnClear);
+            #endregion
 
+            #region OldPhonePad
             // 
             // OldPhonePad
             // 
@@ -92,6 +107,12 @@
             this.MaximizeBox = false;
             this.ResumeLayout(false);
             this.PerformLayout();
+            #endregion
+
+
         }
+        #endregion
+
+
     }
 }

@@ -8,7 +8,7 @@ namespace OldPhonePadUI
         [STAThread]
         static void Main()
         {
-         
+
             ApplicationConfiguration.Initialize();
             Application.Run(new OldPhonePad());
         }
