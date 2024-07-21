@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OldPhonePadUI.Interface
 {
-    public interface IButtonHandler
+    public interface IBtnChecker
     {
-        void HandleButtonPress(OldPhonePad context, Button button);
+        void CheckButtonPress(OldPhonePad oldPhonePad, Button button);
     }
 }

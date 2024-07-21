@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace OldPhonePadUI.Implement
 {
-    public class SpecialButtonHandler : IButtonHandler
+    public class SpecialButtonHandler : IBtnChecker
     {
-        public void HandleButtonPress(OldPhonePad context, Button button)
+        public void CheckButtonPress(OldPhonePad context, Button button)
         {
             string buttonText = button.Text.Substring(0, 1);
 
@@ -18,7 +18,7 @@ namespace OldPhonePadUI.Implement
                 if (context.CurrentText.Length > 0)
                 {
                     context.CurrentText = context.CurrentText.Remove(context.CurrentText.Length - 1);
-                    context.TextBoxDisplay.Text = context.CurrentText;
+                    context.txtShow.Text = context.CurrentText;
                     context.CurrentIndex = 0;
                     context.Timer.Stop();
                 }
@@ -26,7 +26,7 @@ namespace OldPhonePadUI.Implement
             else if (buttonText == "#")
             {
                 context.CurrentText += "#";
-                context.TextBoxDisplay.Text = context.CurrentText;
+                context.txtShow.Text = context.CurrentText;
                 context.CurrentIndex = 0;
                 context.Timer.Stop();
             }

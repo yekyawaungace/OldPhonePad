@@ -1,4 +1,5 @@
 using OldPhonePadUI.Implement;
+using OldPhonePadUI.Interface;
 using System;
 using System.Windows.Forms;
 
@@ -10,12 +11,13 @@ namespace OldPhonePadUI
         public string CurrentText { get; set; } = "";
         public int CurrentIndex { get; set; } = 0;
         public DateTime LastKeyPress { get; set; }
+        public int TimerInterval { get; private set; } = 60000;
+        public TextBox txtShow { get; private set; }
+
         public readonly string[] KeyMappings = new string[]
         {
             "", "&(", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"
         };
-        public int TimerInterval { get; } = 1500; // 1.5 seconds
-        public TextBox TextBoxDisplay { get; private set; }
 
         public OldPhonePad()
         {
@@ -35,13 +37,15 @@ namespace OldPhonePadUI
         {
             Button button = (Button)sender;
             string buttonText = button.Text.Substring(0, 1);
-            var handler = ButtonHandlerFactory.GetButtonHandler(buttonText);
-            handler.HandleButtonPress(this, button);
+
+            //Factory Desgin Pattern
+            IBtnChecker btnchecker = ButtonHandlerFactory.GetButtonChecker(buttonText);
+            btnchecker.CheckButtonPress(this, button);
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            TextBoxDisplay.Clear();
+            txtShow.Clear();
             CurrentText = "";
             CurrentIndex = 0;
             Timer.Stop();

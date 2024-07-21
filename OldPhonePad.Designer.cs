@@ -3,9 +3,8 @@
     partial class OldPhonePad
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.TextBox textBoxDisplay;
-        private System.Windows.Forms.Button[] buttons;
-        private System.Windows.Forms.Button buttonClear;
+        private Button[] btngroup;
+        private Button btnClear;
 
         protected override void Dispose(bool disposing)
         {
@@ -18,70 +17,79 @@
 
         private void InitializeComponent()
         {
-            this.textBoxDisplay = new System.Windows.Forms.TextBox();
-            this.buttons = new System.Windows.Forms.Button[12];
-            this.buttonClear = new System.Windows.Forms.Button();
+            this.txtShow = new TextBox();
+            this.btngroup = new Button[12];
+            this.btnClear = new Button();
             this.SuspendLayout();
 
             // 
-            // textBoxDisplay
+            // TextBoxDisplay
             // 
-            this.textBoxDisplay.Location = new System.Drawing.Point(12, 12);
-            this.textBoxDisplay.Name = "textBoxDisplay";
-            this.textBoxDisplay.Size = new System.Drawing.Size(260, 20);
-            this.textBoxDisplay.TabIndex = 0;
+            this.txtShow.Location = new System.Drawing.Point(50, 20);
+            this.txtShow.Name = "txtShow";
+            this.txtShow.Size = new System.Drawing.Size(280, 30);
+            this.txtShow.Font = new System.Drawing.Font("Courier New", 14F, System.Drawing.FontStyle.Regular);
+            this.txtShow.TabIndex = 0;
+            this.txtShow.TextAlign = HorizontalAlignment.Center;
 
             // 
             // buttons
             // 
+            string[] buttonLabels = new string[]
+            {
+                "1", "2 abc", "3 def",
+                "4 ghi", "5 jkl", "6 mno",
+                "7 pqrs", "8 tuv", "9 wxyz",
+                "*", "0", "#"
+            };
+            int buttonWidth = 80;
+            int buttonHeight = 60;
+            int spacing = 10;
+
             for (int i = 0; i < 12; i++)
             {
-                this.buttons[i] = new System.Windows.Forms.Button();
-                this.buttons[i].Size = new System.Drawing.Size(50, 50);
-                this.buttons[i].Click += new System.EventHandler(this.button_Click);
-                this.Controls.Add(this.buttons[i]);
-            }
+                this.btngroup[i] = new Button();
+                this.btngroup[i].Text = buttonLabels[i];
+                this.btngroup[i].Size = new System.Drawing.Size(buttonWidth, buttonHeight);
+                this.btngroup[i].Click += new System.EventHandler(this.button_Click);
+                this.btngroup[i].Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
+                this.btngroup[i].BackColor = Color.LightGray;
+                this.btngroup[i].FlatStyle = FlatStyle.Flat;
+                this.btngroup[i].FlatAppearance.BorderSize = 2;
+                this.btngroup[i].FlatAppearance.BorderColor = Color.DarkGray;
 
-            this.buttons[0].Text = "1";
-            this.buttons[1].Text = "2 ABC";
-            this.buttons[2].Text = "3 DEF";
-            this.buttons[3].Text = "4 GHI";
-            this.buttons[4].Text = "5 JKL";
-            this.buttons[5].Text = "6 MNO";
-            this.buttons[6].Text = "7 PQRS";
-            this.buttons[7].Text = "8 TUV";
-            this.buttons[8].Text = "9 WXYZ";
-            this.buttons[9].Text = "*";
-            this.buttons[10].Text = "0";
-            this.buttons[11].Text = "#";
-
-            // Positioning buttons
-            for (int i = 0; i < 12; i++)
-            {
                 int row = i / 3;
                 int col = i % 3;
-                this.buttons[i].Location = new System.Drawing.Point(12 + col * 60, 40 + row * 60);
+                this.btngroup[i].Location = new System.Drawing.Point(50 + col * (buttonWidth + spacing), 70 + row * (buttonHeight + spacing));
+                this.Controls.Add(this.btngroup[i]);
             }
 
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(12, 220);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(260, 30);
-            this.buttonClear.TabIndex = 1;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.btnClear.Location = new System.Drawing.Point(50, 350); // Moved lower
+            this.btnClear.Name = "butClear";
+            this.btnClear.Size = new System.Drawing.Size(260, 50);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClear.BackColor = Color.Salmon;
+            this.btnClear.FlatStyle = FlatStyle.Flat;
+            this.btnClear.FlatAppearance.BorderSize = 2;
+            this.btnClear.FlatAppearance.BorderColor = Color.DarkGray;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.Controls.Add(this.btnClear);
 
             // 
             // OldPhonePad
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.textBoxDisplay);
-            this.Controls.Add(this.buttonClear);
+            this.ClientSize = new System.Drawing.Size(384, 461); // Adjust form size if needed
+            this.Controls.Add(this.txtShow);
             this.Name = "OldPhonePad";
-            this.Text = "Old Phone Pad";
+            this.Text = "Keypad Phone";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.ResumeLayout(false);
             this.PerformLayout();
         }

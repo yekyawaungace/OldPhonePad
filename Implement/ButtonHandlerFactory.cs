@@ -9,7 +9,7 @@ namespace OldPhonePadUI.Implement
 {
     public static class ButtonHandlerFactory
     {
-        public static IButtonHandler GetButtonHandler(string buttonText)
+        public static IBtnChecker GetButtonChecker(string buttonText)
         {
             return buttonText switch
             {
